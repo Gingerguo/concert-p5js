@@ -3,19 +3,50 @@
   <head>
     <meta charset="UTF-8">
     <title>concert</title>
-    <script src="libraries/p5.js" type="text/javascript"></script>
-    <script src="libraries/p5.dom.js" type="text/javascript"></script>
-    <script src="libraries/p5.sound.js" type="text/javascript"></script>
-    <script src="sketch.js" type="text/javascript"></script>
-
-    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
+    <style> 
+          body {
+            padding: 0; 
+            margin: 0; 
+            text-align:center;
+          } 
+          
+          h1 {
+            margin-top:50px;
+          }
+          
+          canvas {
+            vertical-align: top;
+          } 
+          
+          .row {
+            display: flex; 
+            justify-content: space-around;
+          }
+          
+          .block {
+            width:300px; 
+            height:300px; 
+            border:1px solid #000; 
+            margin:80px 50px; 
+            padding:30px; 
+            display:inline-block;
+            font-size:50px;
+          }
+    </style>
   </head>
   <body>
-    <div width:"100px"; height:"100px"; background-color:"red"></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
+    <h1>Play around your instruments and make noises</h1>
+    <div class="row">
+    <a href="flute.html"><div class="block">Flute</div></a>
+    <a href="flute.html"><div class="block">Tabla</div></a>
+    </div>
+    <div class="row">
+    <a href="flute.html"><div class="block">Ukulele</div></a>
+    <a href="flute.html"><div class="block">Piano</div></a>
+    </div>
+    <div class="row">
+    <a href="flute.html"><div class="block">Violin</div></a>
+    <a href="flute.html"><div class="block">Drum</div></a>
+    </div>
   </body>
 </html>
