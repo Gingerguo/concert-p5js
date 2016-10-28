@@ -12,7 +12,6 @@
 
   </body>
 
-
 <script>
 var key1;
 var key2;
@@ -22,44 +21,51 @@ var dif1;
 var dif2;
 var dif3;
 
-var isOverKey1;
-var isOverKey2;
-var isOverKey3;
+var isOverKey1 = false;
+var isOverKey2 = false;
+var isOverKey3 = false;
 
-var val = 0;//background color
 
 function preload() {
   flute1 = loadSound('assets/flute/flute_01.mp3');
   flute2 = loadSound('assets/flute/flute_02.mp3');
   flute3 = loadSound('assets/flute/flute_03.mp3');
-
-  tabla1 = loadSound('assets/tabla/tablaloops_01.mp3');
-  tabla2 = loadSound('assets/tabla/tablaloops_02.mp3');
-
-  ukulele1 = loadSound('assets/ukulele/baroza_01.mp3');
+  fluteimg = loadImage('assets/img/flute.png');
 }
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  background(val);
+  background(125,199,196);
+  analyzer = new p5.Amplitude();
+  analyzer.setInput(flute1);
+  analyzer.setInput(flute2);
+  analyzer.setInput(flute3);
+
+  imageMode(CENTER);
 }
 
 function draw() {
-  background(0);
+  background(125,199,196);
+  image(fluteimg, width/2, height/2);
+  var rms1 = analyzer.getLevel();
+  var rms2 = analyzer.getLevel();
+  var rms3 = analyzer.getLevel();
+  noFill();
+  key1 = ellipse(width/2+5, height/2-50, 200+rms1*400, 200+rms1*400); 
+  key2 = ellipse(width/2+5, height/2+180, 200+rms2*400, 200+rms2*400);
+  key3 = ellipse(width/2+5, height/2+410, 200+rms3*400, 200+rms3*400);
+  
+  for(i=0; i<100; i+=10){
+    noFill();
+    strokeWeight(1);
+    ellipse(width/2+5, height/2-50, i,i);
+    ellipse(width/2+5, height/2+180, i,i);
+    ellipse(width/2+5, height/2+410, i,i);
+  }
 
-  textSize(32);
-  fill(255);
-  textAlign(CENTER);
-  text("let's play flute", width/2, 50);
-  fill(255);
-
-  key1 = ellipse(width/2, height/2-230, 200, 200);  // Draw rect at new 0,0
-  key2 = ellipse(width/2, height/2, 200, 200);
-  key3 = ellipse(width/2, height/2+230, 200, 200);
-
-  dif1 = dist(width/2, height/2-230, mouseX, mouseY);
-  dif2 = dist(width/2, height/2, mouseX, mouseY);
-  dif3 = dist(width/2, height/2+230, mouseX, mouseY);
+  dif1 = dist(width/2+5, height/2-50, mouseX, mouseY);
+  dif2 = dist(width/2+5, height/2+180, mouseX, mouseY);
+  dif3 = dist(width/2+5, height/2+410, mouseX, mouseY);
 
   if(dif1<100){
       isOverKey1 = true;
@@ -80,12 +86,15 @@ function draw() {
     }
  }
 
-function mousePressed() {
-  if(isOverKey1 == true){
+function touchStarted() {
+  if(isOverKey1 === true ){
+     console.log('key1');
      flute1.play();
-  }else if(isOverKey2 == true){
+  }else if(isOverKey2 === true ){
+     console.log('key2');
      flute2.play();
-  }else if(isOverKey3 == true){
+  }else if(isOverKey3 === true ){
+     console.log('key3');
      flute3.play();
   }
 }

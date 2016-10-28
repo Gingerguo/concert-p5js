@@ -12,38 +12,31 @@
 
   </body>
 
-
 <script>
   var key1;
   var val = 0;
   function preload() {
-    shaker = loadSound('assets/ukulele/baroza_01.mp3');
+    shaker = loadSound('assets/shake/shake.mp3');
+    shakeimg = loadImage('assets/img/shaker.png');
   }
 
   function setup() {
     createCanvas(windowWidth, windowHeight);
-    background(val);
+    background(0);
     setMoveThreshold(0.7);
-
+    imageMode(CENTER);
   }
 
   function draw() {
-    background(0);
-
-    textSize(32);
-    fill(255);
-    textAlign(CENTER);
-    text("let's play shaker! Shake, shake, shake it!", width/2, 50);
-    fill(255);
-
-    key1 = ellipse(width/2, height/2-230, 400, 400);  // Draw rect at new 0,0
+    background(255,106,134);
+    image(shakeimg, width/2, height/2);
  }
 
-  function deviceMoved() {
+  function deviceTurned() {
     if(shaker.isPlaying() == false){
-      shaker.play();}
-//     shaker.stop([50]);
+      shaker.play();
     }
+  }
 
 </script>
 </html>

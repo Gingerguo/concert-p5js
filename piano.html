@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Piano</title>
+    <script src="libraries/p5.js" type="text/javascript"></script>
+    <script src="libraries/p5.dom.js" type="text/javascript"></script>
+    <script src="libraries/p5.sound.js" type="text/javascript"></script>
+    <style> body {padding: 0; margin: 0;} canvas {vertical-align: top;} </style>
+  </head>
+  <body>
+  </body>
+
+<script>
+var key1;
+var key2;
+var key3;
+var key4;
+
+var isOverKey1 = false;
+var isOverKey2 = false;
+var isOverKey3 = false;
+var isOverKey4 = false;
+
+function preload() {
+  piano1 = loadSound('assets/piano/piano_01.mp3');
+  piano2 = loadSound('assets/piano/piano_02.mp3');
+  piano3 = loadSound('assets/piano/piano_03.mp3');
+  piano4 = loadSound('assets/piano/piano_03.mp3');
+
+  pianoimg = loadImage('assets/img/piano.png');
+}
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  background(125,199,196);
+  imageMode(CENTER);
+}
+
+function draw() {
+  background(125,199,196);
+  image(pianoimg, width/2, height/2);
+
+  noFill();
+  key1 = ellipse(width/2-300, height/2-400, 200, 200);
+  key2 = ellipse(width/2-100, height/2-500, 200, 200);
+  key3 = ellipse(width/2+100, height/2-400, 200, 200);
+  key4 = ellipse(width/2+300, height/2-500, 200, 200);
+
+  for(i=0; i<100; i+=10){
+    noFill();
+    strokeWeight(1);
+    ellipse(width/2-300, height/2-400, i,i);
+    ellipse(width/2-100, height/2-500, i,i);
+    ellipse(width/2+100, height/2-400, i,i);
+    ellipse(width/2+300, height/2-500, i,i);
+  }
+
+  dif1 = dist(width/2-300, height/2-400, mouseX, mouseY);
+  dif2 = dist(width/2-100, height/2-500, mouseX, mouseY);
+  dif3 = dist(width/2+100, height/2-400, mouseX, mouseY);
+  dif4 = dist(width/2+300, height/2-500, mouseX, mouseY);
+
+  if(dif1<100){
+      isOverKey1 = true;
+    } else {
+      isOverKey1 = false;
+    }
+
+   if(dif2<100){
+      isOverKey2 = true;
+    } else {
+      isOverKey2 = false;
+    }
+
+   if(dif3<100){
+      isOverKey3 = true;
+    } else {
+      isOverKey3 = false;
+    }
+
+   if(dif4<100){
+      isOverKey4 = true;
+    } else {
+      isOverKey4 = false;
+    }
+ }
+
+function touchStarted() {
+  if(isOverKey1 === true ){
+     piano1.play();
+  }else if(isOverKey2 === true ){
+     piano2.play();
+  }else if(isOverKey3 === true ){
+     piano3.play();
+  }else if(isOverKey4 === true){
+     piano4.play();
+  }
+}
+
+</script>
+</html>

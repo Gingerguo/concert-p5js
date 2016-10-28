@@ -8,6 +8,10 @@
             padding: 0;
             margin: 0;
             text-align:center;
+            background-image: url("assets/img/index.png");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            bottom: 0;
           }
 
           h1 {
@@ -17,15 +21,15 @@
           canvas {
             vertical-align: top;
           }
-
-          .row {
+          .con{
+            position: absolute;
+            bottom: 100px;
             display: flex;
-            justify-content: space-around;
           }
 
           .block {
-            width:300px;
-            height:300px;
+            width:150px;
+            height:100px;
             border:1px solid #000;
             margin:80px 50px;
             padding:30px;
@@ -35,18 +39,20 @@
     </style>
   </head>
   <body>
-    <h1>Play around your instruments and make noises</h1>
-    <div class="row">
-    <a href="flute.html"><div class="block">Flute</div></a>
-    <a href="tabla.html"><div class="block">Tabla</div></a>
-    </div>
-    <div class="row">
-    <a href="flute.html"><div class="block">Ukulele</div></a>
-    <a href="flute.html"><div class="block">Piano</div></a>
-    </div>
-    <div class="row">
-    <a href="flute.html"><div class="block">Violin</div></a>
-    <a href="flute.html"><div class="block">Drum</div></a>
+
+    <div class="con">
+      <div class="row">
+        <a href="flute.html"><div class="block">Flute</div></a>
+        <a href="tabla.html"><div class="block">Tabla</div></a>
+      </div>
+      <div class="row">
+       <a href="shaker.html"><div class="block">Shaker</div></a>
+       <a href="piano.html"><div class="block">Piano</div></a>
+      </div>
+      <div class="row">
+       <a href="harp.html"><div class="block">Rubab</div></a>
+       <a href="tick.html"><div class="block">Tick-tick</div></a>
+      </div>
     </div>
   </body>
 </html>
